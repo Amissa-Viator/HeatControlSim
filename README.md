@@ -98,71 +98,55 @@ The boundary value problems are discretized using the finite difference method, 
 
 For the considered optimal control problem, the gradient of the objective functional is given by
 
-$$
+```math
 J'(v)=2p(x),
-$$
+```
 
 where $p(x)$ denotes the solution of the corresponding adjoint boundary value problem.
 
 The control approximation is updated according to
 
-$$
-v_j^{(k+1)}
-=
-v_j^{(k)}
--
-\alpha^{(k)}J'_j(v^{(k)}),
-\qquad j=0,\ldots,N,
-$$
+```math
+v_j^{(k+1)}=v_j^{(k)}-\alpha^{(k)}J'_j(v^{(k)}),\qquad j=0,\ldots,N,
+```
 
 where $\alpha^{(k)}>0$ is the step-size parameter, adjusted through successive reduction to obtain a decrease in the objective functional.
 
 The iterative process terminates when
 
-$$
-\sqrt{
-h\sum_{j=0}^{N}
-\left(v_j^{(k+1)}-v_j^{(k)}\right)^2
-}
-<\varepsilon,
-$$
+```math
+\sqrt{h\sum_{j=0}^{N}\left(v_j^{(k+1)}-v_j^{(k)}\right)^2}<\varepsilon,
+```
 
 where $h$ is the spatial grid step and $\varepsilon>0$ is the prescribed stopping tolerance.
-
 
 ### Conditional Gradient Method (Frank–Wolfe)
 
 For the box-constrained optimal control problem, the conditional gradient method constructs a feasible search direction by solving the auxiliary linear minimization problem
 
-$$
-\widehat{v}^{(k)}(x)
-=
-\operatorname*{arg\,min}_{v\in V}
-\left\langle J'(v^{(k)}),v\right\rangle.
-$$
+```math
+\widehat{v}^{(k)}=\operatorname*{arg\,min}_{v\in V}\left\langle J'(v^{(k)}),v\right\rangle.
+```
 
 For the admissible control set defined in the **Problem Statement**, the solution is obtained pointwise:
 
-$$
+```math
 \widehat{v}^{(k)}(x)=
 \begin{cases}
 0, & J'(v^{(k)})(x)>0,\\
 v_{\max}, & J'(v^{(k)})(x)<0,\\
 \text{any value in }[0,v_{\max}], & J'(v^{(k)})(x)=0.
 \end{cases}
-$$
+```
 
 The next control approximation is computed as
 
-$$
-v^{(k+1)}(x) = v^{(k)}(x) +
-\alpha_k
-\left(
-\widehat{v}^{(k)}(x)-v^{(k)}(x)
-\right),
-$$
+```math
+v^{(k+1)}(x)=v^{(k)}(x)+\alpha_k\left(\widehat{v}^{(k)}(x)-v^{(k)}(x)\right),
+```
 
 where $\alpha_k$ is a step-size parameter chosen to ensure a monotonic decrease in the objective functional.
+
 
 ### Projection-Iteration Modification
 
@@ -170,43 +154,39 @@ The projection-iteration modification of the gradient method for solving the con
 
 **Initialization.** Specify $N_1$ and $N_{\max}$, where $N_1$ is the initial discretization order and $N_{\max}$ is the maximum discretization order. Initialize the total iteration counter $k_{\mathrm{sum}}=0$ and set the stage number $n=1$.
 
-**Step 1.** Set the iteration counter at the $n$-th stage to $k=0$. Determine the discretization step $h_n=\frac{l}{N_n}$ and the corresponding computational tolerance $\varepsilon_n=C h_n^2,$ consistent with the approximation error, where $C>0$ is a proportionality constant (an algorithm parameter).
+**Step 1.** Set the iteration counter at the $n$-th stage to $k=0$. Determine the discretization step $h_n=\frac{l}{N_n}$ and the corresponding computational tolerance $\varepsilon_n=C h_n^2$, consistent with the approximation error, where $C>0$ is a proportionality constant (an algorithm parameter).
+
 Specify the initial approximation of the discrete control function:
 
-$$
-\widetilde{v}^{(0)}=
-\left(v_1^{(0)},v_2^{(0)},\ldots,v_{N_n}^{(0)}\right).
-$$
+```math
+\widetilde{v}^{(0)}=\left(v_1^{(0)},v_2^{(0)},\ldots,v_{N_n}^{(0)}\right).
+```
 
 **Step 2.** Solve the discretized optimal control problem using the gradient method with computational tolerance $\varepsilon_n$. Determine the iteration number $k=k_n$ at which the stopping criterion is satisfied:
 
-$$
-\left\|\widetilde{v}^{(k)}-\widetilde{v}^{(k-1)}\right\|_{h_n}
-<\varepsilon_n.
-$$
+```math
+\left\|\widetilde{v}^{(k)}-\widetilde{v}^{(k-1)}\right\|_{h_n}<\varepsilon_n.
+```
 
 **Step 3.** Update the total iteration counter:
 
-$$
+```math
 k_{\mathrm{sum}}:=k_{\mathrm{sum}}+k_n.
-$$
+```
 
 **Step 4.** Set $N_{n+1}=2N_n$. If $N_{n+1}>N_{\max}$, terminate the algorithm. Otherwise, proceed to **Step 5**.
 
 **Step 5.** Perform piecewise linear interpolation of the discrete control function
-$$
-\left(
-v_1^{(k_n)},v_2^{(k_n)},\ldots,v_{N_n}^{(k_n)}
-\right)
-$$
+
+```math
+\widetilde{v}^{(k_n)}=\left(v_1^{(k_n)},v_2^{(k_n)},\ldots,v_{N_n}^{(k_n)}\right)
+```
 
 on the interval $[0,l]$ and construct the vector
 
-$$
-\left(
-v_1^{(0)},v_2^{(0)},\ldots,v_{N_{n+1}}^{(0)}
-\right)
-$$
+```math
+\widetilde{v}^{(0)}=\left(v_1^{(0)},v_2^{(0)},\ldots,v_{N_{n+1}}^{(0)}\right)
+```
 
 of interpolated values at the nodes of the uniform grid corresponding to the discretization order $N_{n+1}$.
 
@@ -216,51 +196,54 @@ of interpolated values at the nodes of the uniform grid corresponding to the dis
 
 The evaluation of the objective functional requires solving the state boundary value problem, while the computation of its gradient additionally requires solving the corresponding adjoint problem.
 
-$$
+The state equation is given by
+
+```math
 Lu=f(x)+v(x),
-$$
+```
 
-and the adjoint equation
+and the adjoint equation by
 
-$$
+```math
 Lp=u(x)-\varphi(x),
-$$
+```
 
 subject to the boundary conditions
 
-$$
+```math
 u(0)=g_0,\qquad u(l)=g_l,
-$$
+```
 
-$$
+```math
 p(0)=0,\qquad p(l)=0.
-$$
+```
 
 The differential operator $L$ is defined as
 
-$$
+```math
 Lu=-\frac{d}{dx}\left(k(x)\frac{du}{dx}\right),
-$$
+```
 
-$$
+```math
 Lp=-\frac{d}{dx}\left(k(x)\frac{dp}{dx}\right).
-$$
+```
 
 Expanding the derivatives yields
 
-$$
+```math
 k'(x)u'(x)+k(x)u''(x)=-f(x)-v(x),
-$$
+```
 
 and
 
-$$
+```math
 k'(x)p'(x)+k(x)p''(x)=\varphi(x)-u(x).
-$$
+```
 
 Both boundary value problems are discretized using the finite difference method on a uniform spatial grid. The resulting tridiagonal systems of linear algebraic equations are solved using the Thomas algorithm.
 
 The objective functional is evaluated numerically using **Simpson's rule**.
+
 
 ## Application Features
 
