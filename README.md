@@ -125,7 +125,7 @@ where $h$ is the spatial grid step and $\varepsilon>0$ is the prescribed stoppin
 For the box-constrained optimal control problem, the conditional gradient method constructs a feasible search direction by solving the auxiliary linear minimization problem
 
 ```math
-\widehat{v}^{(k)}=\operatorname*{arg\,min}_{v\in V}\left\langle J'(v^{(k)}),v\right\rangle.
+\widehat{v}^{(k)}=\underset{v\in V}{\arg\min}\left\langle J'(v^{(k)}),v\right\rangle.
 ```
 
 For the admissible control set defined in the **Problem Statement**, the solution is obtained pointwise:
