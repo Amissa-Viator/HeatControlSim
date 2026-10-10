@@ -280,7 +280,7 @@ The application provides a graphical interface for configuring, solving, and ana
 Clone the repository:
 
 ```bash
-git clone https://github.com/Amissa_Viator/HeatControlSim.git
+git clone https://github.com/Amissa-Viator/HeatControlSim.git
 cd HeatControlSim
 ```
 
