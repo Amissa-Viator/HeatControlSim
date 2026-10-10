@@ -1,0 +1,6 @@
+<RCC>
+  <qresource>
+    <file>icons/caret-down.png</file>
+    <file>icons/angle-small-down.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>icons/close.png</file>
+    <file>icons/info.png</file>
+    <file>icons/check.png</file>
+    <file>icons/cross.png</file>
+  </qresource>
+</RCC>

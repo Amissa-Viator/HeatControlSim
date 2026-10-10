@@ -1,0 +1,10 @@
+<RCC>
+  <qresource>
+    <file>icons/add_white.png</file>
+    <file>icons/history-white.png</file>
+    <file>icons/home-white.png</file>
+    <file>icons/add.png</file>
+    <file>icons/home.png</file>
+    <file>icons/time-past.png</file>
+  </qresource>
+</RCC>

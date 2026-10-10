@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../style/home_style.css">
+        <link rel="stylesheet" href="../style/scrollbar.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Information System for Modeling and Analysis of Optimal Control in Thermostatics</h1>
+
+            <p>
+                This program is designed to solve the optimal control problem for the thermostatics process in a one-dimensional
+                rod under various initial conditions. The system allows working with both unconstrained control problems and problems
+                where such constraints are present.
+            </p>
+
+            <h2>Solution methods</h2>
+
+            <ul>
+                <li>Gradient method for functional minimization</li>
+                <li>Conditional gradient method</li>
+                <li>Gradient method with adaptive discretization</li>
+            </ul>
+
+            <p>
+                The functional value is calculated using Simpson’s rule, ensuring high accuracy.
+                The boundary-value problem is solved using the finite difference method followed by the application of the
+                tridiagonal matrix algorithm (the Thomas algorithm).
+            </p>
+
+            <h2>User Guide</h2>
+
+            <ul>
+                <li>
+                    Adding a task: You can add a task via the "Add task" tab. The thermostatic problem conditions are
+                    predefined: the problem statement, functional, gradient, and basic parameters are displayed on the
+                    page. If you wish to keep a new solution for future reference, you must save it manually by clicking
+                    the "Save" button.
+                </li>
+                <li>
+                    Method selection: You can choose a single method or perform a comparison between the classical
+                    and modified (gradient method with adaptive discretization) approaches.
+                </li>
+                <li>
+                    History: All saved tasks can be viewed in the "History" tab.
+                </li>
+            </ul>
+
+            <h2>Note:</h2>
+
+            <p>
+                Project files (Excel files, graphical materials, resource data)
+                should not be modified or moved, as this may disrupt the program's operation.
+            </p>
+        </div>
+    </body>
+</html>

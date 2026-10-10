@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" id="MathJax-script"
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Gill Sans", sans-serif;
+            margin-left: 10px;
+            padding: 10px 0;
+            line-height: 1.6;
+            color: #010626;
+            font-size: 16px;
+        }
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a1a56;
+            font-weight: 600;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+        .formula {
+            text-align: center;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Optimal Control Problem in Thermostatics</h1>
+
+    <p>
+        Consider the optimal control problem for the thermostatics process occurring in a homogeneous rod of length
+        \(l=1\) with a given temperature at the left  (\(x=0\)) and right (\(x=l\)) ends.
+        The goal is to control the temperature of the internal heat sources in order to bring the temperature
+        distribution \(u(x)\) in the rod as close as possible to the desired distribution \(\phi(x)\).</p>
+
+    <p>The mathematical formulation of the problem is to minimize the functional:</p>
+
+    <div class="formula">
+    \[
+    J(v) = \int_0^l (u(x;v) - \phi(x))^2 \, dx
+    \]
+    </div>
+
+    <p>subject to the following conditions</p>
+
+    <div class="formula">
+    \[
+    Lu = f(x) + v(x), \quad x \in (0,l),
+    \]</div>
+
+    <div class="formula">
+    \[
+    u(0) = g_0, \quad u(l) = g_l,
+    \]</div>
+
+    <p>
+        where \(g_0, g_l\) are given constants, \(\phi(x)\) is a specified function of the desired temperature
+        distribution in the rod, \(f(x)\) is a given function describing the effect of internal heat sources,
+        \(v \equiv v(x)\) is the control function to be determined for the internal heat sources,
+        \(u \equiv u(x) \equiv u(x;v)\) is the state function (temperature) influenced by the control \(v(x)\)
+        over the interval \([0,l]\).</p>
+
+    <p>The action of the differential operator \(L\) in the corresponding equation is defined by</p>
+
+    <div class="formula">
+    \[
+    Lu = -\frac{d}{dx} \Big( k(x) \cdot \frac{du}{dx} \Big) = -\big( k(x) \cdot u'(x) \big)',
+    \]</div>
+
+    <p>
+        where \(k(x)\) is the variable thermal conductivity coefficient along the rod, satisfying the condition:
+    </p>
+
+    <div class="formula">
+    \[
+    k(x) \ge c_1, \quad x \in (0,l),
+    \]</div>
+
+    <p>
+        where \(c_1 > 0\) is a given positive constant.
+    </p>
+
+</body>
+</html>
