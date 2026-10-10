@@ -79,11 +79,7 @@ V=L^2(0,l).
 The admissible control set is defined as
 
 ```math
-V=\left\{
-v\in L^2(0,l):
-0\leq v(x)\leq v_{\max}
-\text{ for almost every }x\in(0,l)
-\right\},
+v=v(x)\in V=\left\{v(x)\in L^2(0,l):0\leq v(x)\leq v_{\max},\quad x\in[0,l]\right\},
 ```
 
 where $v_{\max}>0$ is a prescribed upper bound on the control function.
@@ -115,7 +111,7 @@ where $\alpha^{(k)}>0$ is the step-size parameter, adjusted through successive r
 The iterative process terminates when
 
 ```math
-\sqrt{h\sum_{j=0}^{N}\left(v_j^{(k+1)}-v_j^{(k)}\right)^2}<\varepsilon,
+\left\|v^{(k+1)}-v^{(k)}\right\|_h=\sqrt{h\cdot\sum_{j=0}^{N}\left(v_j^{(k+1)}-v_j^{(k)}\right)^2}<\varepsilon,
 ```
 
 where $h$ is the spatial grid step and $\varepsilon>0$ is the prescribed stopping tolerance.
@@ -243,7 +239,6 @@ k'(x)p'(x)+k(x)p''(x)=\varphi(x)-u(x).
 Both boundary value problems are discretized using the finite difference method on a uniform spatial grid. The resulting tridiagonal systems of linear algebraic equations are solved using the Thomas algorithm.
 
 The objective functional is evaluated numerically using **Simpson's rule**.
-
 
 ## Application Features
 
